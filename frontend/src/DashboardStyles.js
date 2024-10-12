@@ -69,7 +69,7 @@ export const Main = styled.div`
 
 export const Title = styled.h2`
   color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 28px;
   font-weight: 600;
   text-transform: uppercase;
@@ -273,7 +273,8 @@ export const MenuButton = styled.button`
 export const SearchBar = styled.input`
   width: 98%;
   padding: 10px;
-  margin: 30px 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -300,7 +301,7 @@ export const FilterContainer = styled.div`
 
 // New CategorySelect styles
 export const CategorySelect = styled.select`
-  padding: 8px;
+  padding: 9px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -309,6 +310,7 @@ export const CategorySelect = styled.select`
   color: black;
   background-color: #3498db;
   margin-left: 15px;
+  margin-bottom: 10px;
 
 `;
 
@@ -334,6 +336,7 @@ export const LogoutButton = styled.button`
   cursor: pointer;
   font-size: 16px;
 
+  margin-bottom: 1px;
   &:hover {
     background-color: #ff1a1a; /* Darker red on hover */
   }
