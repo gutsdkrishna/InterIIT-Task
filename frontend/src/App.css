@@ -1,0 +1,43 @@
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.sidebar ul li {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.sidebar ul li div {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidebar ul li button {
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+}
+
+.main div {
+  margin-bottom: 20px;
+}
