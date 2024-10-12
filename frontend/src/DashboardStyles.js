@@ -107,7 +107,8 @@ export const GodownTree = styled.ul`
 export const GodownNode = styled.li`
   position: relative;
   margin-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 30px;
+  margin-top: 10px;
 
   &::before {
     content: '';
@@ -144,7 +145,7 @@ export const GodownContent = styled.div`
 export const ViewItemsButton = styled.button`
   display: flex;
   align-items: center; /* Align the icon and text vertically */
-  padding: 8px 12px;
+  padding: 5px 12px;
   margin-left: auto; /* Push the button to the far right */
   background-color: ${(props) => (props.isSelected ? '#007bff' : '#f0f0f0')};
   color: ${(props) => (props.isSelected ? '#fff' : '#333')};
@@ -319,4 +320,21 @@ export const LoadingSpinner = styled.div`
   font-size: 18px;
   color: #555;
   height: 70%; // Adjust as necessary to fit your layout
+`;
+
+
+
+export const LogoutButton = styled.button`
+  margin-left: 868px; /* Space between title and button */
+  background-color: #ff4d4d; /* Red background for visibility */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+  }
 `;

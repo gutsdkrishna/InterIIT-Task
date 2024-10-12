@@ -4,10 +4,25 @@ import {
   DashboardContainer, Sidebar, Main, Title, GodownTree, GodownNode,
   GodownContent, ViewItemsButton, ItemsList, ItemCard, ItemImageContainer,
   ItemImage, ItemDetails, ItemName, ItemInfo, MenuButton, SearchBar, LoadingSpinner,
-  FilterContainer, CategorySelect
+  FilterContainer, CategorySelect, LogoutButton
 } from './DashboardStyles';
+import useAuth from './useAuth'; // Adjust the import path as necessary
+import { supabase } from './supabase'; // Adjust the import path as necessary
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Dashboard() {
+
+useAuth(); 
+  const navigate = useNavigate(); // Get navigate from React Router
+
+     const handleLogout = async () => {
+    await supabase.auth.signOut(); // Sign out the user
+    navigate('/'); // Redirect to login page after logout
+  };
+
+
+
   const [godowns, setGodowns] = useState([]);
   const [selectedGodown, setSelectedGodown] = useState(null);
   const [items, setItems] = useState([]);
@@ -88,6 +103,14 @@ export default function Dashboard() {
     handleSearch({ target: { value: searchTerm } });
   };
 
+
+
+
+
+    
+  
+  
+
   const renderTree = (parentId) => {
     const children = godowns.filter(godown => godown.parent_godown === parentId);
     if (children.length === 0) return null;
@@ -132,7 +155,12 @@ export default function Dashboard() {
         )}
       </Sidebar>
       <Main>
-        <Title>Item Details</Title>
+        <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+          <Title>Item Details</Title>
+          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+        </div>
+
+        {/* <Title>Item Details</Title> */}
         <FilterContainer>
           <SearchBar
             type="text"
