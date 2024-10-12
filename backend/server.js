@@ -72,3 +72,5 @@ app.get('/api/search-items', async (req, res) => {
     res.status(500).json({ error: 'Error searching items' });
   }
 });
+
+

@@ -101,7 +101,7 @@ export default function Dashboard() {
             <GodownNode key={child.id}>
               <GodownContent onClick={() => hasChildren ? toggleGodown(child.id) : handleGodownClick(child.id)}>
                 <span>
-                  {expandedGodowns[child.id] ? '▼' : '▶'}
+                  {expandedGodowns[child.id] ? '▼  ' : '▶  '}
                   <span style={{ marginLeft: '5px' }}>{child.name}</span>
                 </span>
                 {!hasChildren && (

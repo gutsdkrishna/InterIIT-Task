@@ -89,7 +89,7 @@ export const Title = styled.h2`
   }
 
   &:hover::after {
-    width: 100px;
+    width: 180px;
   }
 
   @media (max-width: 768px) {
@@ -307,7 +307,8 @@ export const CategorySelect = styled.select`
   cursor: pointer;
   color: black;
   background-color: #3498db;
-  margin: 5px 10px;
+  margin-left: 15px;
+
 `;
 
 // Add this styled component for loading
