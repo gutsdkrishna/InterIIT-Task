@@ -21,7 +21,6 @@ const Item = db.collection('items');
 app.get('/api/godowns', async (req, res) => {
   try {
     const godowns = await Godown.find().toArray();
-    console.log('Fetched godowns:', godowns); // Debug log
     res.json(godowns);
   } catch (error) {
     console.error('Error fetching godowns:', error); // Debug log
@@ -34,7 +33,6 @@ app.get('/api/items', async (req, res) => {
   const godownId = req.query.godown_id;
   try {
     const filteredItems = await Item.find({ godown_id: godownId }).toArray();
-    console.log('Fetched items:', filteredItems); // Debug log
     res.json(filteredItems);
   } catch (error) {
     console.error('Error fetching items:', error); // Debug log
@@ -54,17 +52,23 @@ app.listen(PORT, () => {
 });
 
 // Global item search by name (ignoring godown_id)
+// Global item search by name and category
 app.get('/api/search-items', async (req, res) => {
   const searchTerm = req.query.search_term;
-  try {
-    const matchingItems = await Item.find({
-      name: { $regex: searchTerm, $options: 'i' }  // Global search by item name
-    }).toArray();
+  const category = req.query.category;
+  const query = {
+    name: { $regex: searchTerm, $options: 'i' },  // Search by item name
+  };
+  
+  if (category) {
+    query.category = category;  // Filter by category if selected
+  }
 
-    console.log('Fetched search results:', matchingItems); // Debug log
+  try {
+    const matchingItems = await Item.find(query).toArray();
     res.json(matchingItems);
   } catch (error) {
-    console.error('Error searching items:', error); // Debug log
+    console.error('Error searching items:', error);
     res.status(500).json({ error: 'Error searching items' });
   }
 });

@@ -1,6 +1,5 @@
 // LoginStyles.js
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import { User, Lock } from 'lucide-react';
 
 const GlobalStyle = createGlobalStyle`
   body {

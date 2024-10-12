@@ -14,7 +14,6 @@ import {
   SignUpRedirect, // Assuming this is a styled component for the "Sign Up" redirect section
 } from './LoginStyles'; // Adjust the import path as necessary
 import { User, Lock, AlertCircle } from 'lucide-react';
-import axios from 'axios'; // Use axios to make API calls
 
 function Login() {
   const [email, setEmail] = useState('');

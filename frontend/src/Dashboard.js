@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
   DashboardContainer, Sidebar, Main, Title, GodownTree, GodownNode,
   GodownContent, ViewItemsButton, ItemsList, ItemCard, ItemImageContainer,
-  ItemImage, ItemDetails, ItemName, ItemInfo, MenuButton, SearchBar, LoadingSpinner
+  ItemImage, ItemDetails, ItemName, ItemInfo, MenuButton, SearchBar, LoadingSpinner,
+  FilterContainer, CategorySelect
 } from './DashboardStyles';
 
 export default function Dashboard() {
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const [expandedGodowns, setExpandedGodowns] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
   const [loadingGodowns, setLoadingGodowns] = useState(true);
   const [loadingItems, setLoadingItems] = useState(false);
 
@@ -53,14 +55,38 @@ export default function Dashboard() {
     }));
   };
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+  const handleSearch = async (e) => {
+    const searchQuery = e.target.value;
+    setSearchTerm(searchQuery);
+
+    if (searchQuery.length > 0 || selectedCategory) {
+      setLoadingItems(true);
+      try {
+        // Make API call with both search term and category
+        const response = await axios.get('http://localhost:5006/api/search-items', {
+          params: {
+            search_term: searchQuery,
+            category: selectedCategory, // Add category to query params
+          },
+        });
+        setItems(response.data); // Set the global search results
+        setLoadingItems(false);
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+        setLoadingItems(false);
+      }
+    } else {
+      setItems([]); // Clear items if both search and category are empty
+    }
   };
 
-  // Filter items based on search term
-  const filteredItems = items.filter(item => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleCategoryChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedCategory(selectedValue);
+    
+    // Trigger the search again with the new category filter
+    handleSearch({ target: { value: searchTerm } });
+  };
 
   const renderTree = (parentId) => {
     const children = godowns.filter(godown => godown.parent_godown === parentId);
@@ -107,19 +133,31 @@ export default function Dashboard() {
       </Sidebar>
       <Main>
         <Title>Item Details</Title>
-        <SearchBar
-          type="text"
-          placeholder="Search items..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+        <FilterContainer>
+          <SearchBar
+            type="text"
+            placeholder="Search items..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <CategorySelect value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">All Categories</option>
+            <option value="Toys">Toys</option>
+            <option value="Tools">Tools</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Clothing">Clothing</option>
+            {/* Add more categories as needed */}
+          </CategorySelect>
+        </FilterContainer>
+
         {loadingItems ? (
           <LoadingSpinner>Loading...</LoadingSpinner>
-        ) : filteredItems.length === 0 && searchTerm.trim() !== '' ? (
+        ) : items.length === 0 && searchTerm.trim() !== '' ? (
           <p>No items found for this search term</p>
         ) : (
           <ItemsList>
-            {filteredItems.map(item => (
+            {items.map(item => (
               <ItemCard key={item.item_id}>
                 <ItemImageContainer>
                   <ItemImage src={item.image_url} alt={item.name} />

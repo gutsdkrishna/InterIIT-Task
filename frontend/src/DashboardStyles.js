@@ -290,7 +290,25 @@ export const SearchBar = styled.input`
     margin: 20px 0;
   }
 `;
+// New FilterContainer styles
+export const FilterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
+// New CategorySelect styles
+export const CategorySelect = styled.select`
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  color: black;
+  background-color: #3498db;
+  margin: 5px 10px;
+`;
 
 // Add this styled component for loading
 export const LoadingSpinner = styled.div`
