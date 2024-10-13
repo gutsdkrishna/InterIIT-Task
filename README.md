@@ -54,4 +54,19 @@ Running the Project Locally
 
 1.  **Clone the repository**:
 
-    bash
+
+2.  **Access the app**:
+
+    -   Frontend: `http://localhost:3000`
+    -   Backend API: `http://localhost:5000/api` (or depending on your Docker setup)
+
+Deployment Links
+----------------
+
+-   **Frontend**: [Deployed Frontend URL]
+-   **Backend**: [Deployed Backend URL]
+
+Conclusion
+----------
+
+This project demonstrates the full-stack development process, from setting up a React frontend and Node.js backend to containerizing the app for deployment. The goal was to create a scalable and maintainable structure using modern tools and technologies.
