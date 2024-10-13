@@ -6,9 +6,25 @@ This project is a web application designed to manage and display information abo
 
 ## Deployment Links
 
-1. **Frontend**: https://interiit-frontend.azurewebsites.net
-2. **Backend**: https://interiit-backend.azurewebsites.net
+1. **Frontend**: [https://interiit-frontend.azurewebsites.net](https://interiit-frontend.azurewebsites.net)
+2. **Backend**: [https://interiit-backend.azurewebsites.net](https://interiit-backend.azurewebsites.net)
 
+## Features
+
+- **User Authentication**: Secure sign-up and login using Supabase.
+- **Godown Management**: View and navigate through a hierarchical structure of godowns.
+- **Item Search and Filter**: Search items by name and filter by category.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **RESTful APIs**: Efficient data retrieval and management.
+
+## Technologies Used
+
+- **Frontend**: React, [React Router](https://reactrouter.com/en/main), [Styled-components](https://styled-components.com/)
+- **Backend**: Node.js, Express, [Mongoose](https://mongoosejs.com/)
+- **Database**: MongoDB
+- **Authentication**: [Supabase](https://supabase.com/)
+- **Containerization**: Docker, Docker Compose
+- **Deployment**: [Azure]
 
 ## Thought Process and Implementation
 
@@ -30,8 +46,8 @@ This project is a web application designed to manage and display information abo
 
 1. **Frontend Development**:
    - Used React for building the user interface.
-   - Implemented routing with [`react-router-dom`](https://reactrouter.com/en/main) for navigation between pages.
-   - Styled components using [`styled-components`](https://styled-components.com/) for a consistent and modular design.
+   - Implemented routing with [react-router-dom](https://reactrouter.com/en/main) for navigation between pages.
+   - Styled components using [styled-components](https://styled-components.com/) for a consistent and modular design.
 
 2. **Backend Development**:
    - Set up an Express server to handle API requests.
