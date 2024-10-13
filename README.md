@@ -4,6 +4,12 @@
 
 This project is a web application designed to manage and display information about godowns and their items. It consists of a frontend built with [React](https://reactjs.org/) and a backend using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/), with [MongoDB](https://www.mongodb.com/) as the database. The application allows users to sign up, log in, view godowns, and search for items based on various criteria.
 
+## Deployment Links
+
+1. **Frontend**: https://interiit-frontend.azurewebsites.net
+2. **Backend**: https://interiit-backend.azurewebsites.net
+
+
 ## Thought Process and Implementation
 
 ### Ideas and Thought Process
@@ -55,24 +61,24 @@ This project is a web application designed to manage and display information abo
    ```
    
 2. **Backend Setup**:
-    *Navigate to the backend directory*:
+    Navigate to the backend directory:
    ```bash
    cd backend
    ```
-   *Install dependencies*:
+   Install dependencies:
 
    ```bash
    npm install
    ```
 
-   *Create a .env file in the backend directory with the following content*:
+   Create a .env file in the backend directory with the following content:
 
    ```env
    MONGO_URI=<your-mongodb-uri>
    PORT=5000
    ```
 
-   *Start the backend server*:
+   Start the backend server:
 
    ```bash
     npm start
@@ -97,4 +103,25 @@ This project is a web application designed to manage and display information abo
    ```bash
    npm start
    ```
+4. **Access the Application**:
+    Open your browser and go to http://localhost:3000.
+   
+### Running with Docker
+
+1. **Build and Run Containers**:
+   From the root directory of the project, run:
+   Build and Run Containers:
+
+   From the root directory of the project, run:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+2. **Access the Application**:
+
+    Open your browser and go to http://localhost:3000.
+
+
+
 
