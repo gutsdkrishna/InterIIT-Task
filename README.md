@@ -53,7 +53,9 @@ Running the Project Locally
 ### Steps to Run Locally
 
 1.  **Clone the repository**:
-
+     ```bash
+   git clone <repository-url>
+   cd <repository-directory>```
 
 2.  **Access the app**:
 
