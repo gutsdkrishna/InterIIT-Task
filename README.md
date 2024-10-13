@@ -55,8 +55,46 @@ This project is a web application designed to manage and display information abo
    ```
    
 2. **Backend Setup**:
-    Navigate to the backend directory:
+    *Navigate to the backend directory*:
    ```bash
    cd backend
+   ```
+   *Install dependencies*:
+
+   ```bash
+   npm install
+   ```
+
+   *Create a .env file in the backend directory with the following content*:
+
+   ```env
+   MONGO_URI=<your-mongodb-uri>
+   PORT=5000
+   ```
+
+   *Start the backend server*:
+
+   ```bash
+    npm start
+   ```
+
+3. **Frontend Setup**:
+
+    Navigate to the frontend directory:
+
+    ```bash
+      cd ../frontend
+    ```
+
+   Install dependencies:
+
+   ```bash
+   npm install
+   ```
+   
+   Start the frontend development server:
+
+   ```bash
+   npm start
    ```
 
