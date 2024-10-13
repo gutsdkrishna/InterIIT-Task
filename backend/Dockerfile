@@ -18,5 +18,9 @@ COPY . .
 # Expose the port the backend will run on
 EXPOSE 5000
 
+# Add a healthcheck for Azure Container monitoring
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl --fail http://localhost:5000/health || exit 1
+
 # Start the backend server
 CMD ["node", "server.js"]

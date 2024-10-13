@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://interiit-frontend.azurewebsites.net', // Frontend's production URL
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); // Include this line to parse JSON request bodies
 
 // MongoDB Connection
