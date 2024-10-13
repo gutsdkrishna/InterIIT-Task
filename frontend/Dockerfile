@@ -1,26 +1,29 @@
-# Use the official Node.js image from Docker Hub
-FROM node:18
+# Stage 1: Build React app
+FROM node:14 AS build
 
-# Set the working directory in the container
-WORKDIR /app
+# Set working directory inside the container
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the container
+# Copy package.json and package-lock.json to install dependencies
 COPY package*.json ./
 
-# Install dependencies
+# Install the dependencies
 RUN npm install
 
-# Copy the rest of the frontend files to the container
+# Copy the rest of the frontend files
 COPY . .
 
-# Build the frontend
+# Build the React app for production
 RUN npm run build
 
-# Install a simple web server to serve the built frontend
-RUN npm install -g serve
+# Stage 2: Serve the React app using nginx
+FROM nginx:alpine
 
-# Expose port 5000 (or whichever port you want to serve the frontend on)
-EXPOSE 5000
+# Copy the build artifacts from the previous stage
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
-# Command to run the frontend in production mode
-CMD ["serve", "-s", "build"]
+# Expose the port that nginx runs on
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

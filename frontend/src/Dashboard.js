@@ -34,7 +34,7 @@ useAuth();
   const [loadingItems, setLoadingItems] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5006/api/godowns')
+    axios.get('http://localhost:5005/api/godowns')
       .then(response => {
         setGodowns(response.data);
         setLoadingGodowns(false);
@@ -48,7 +48,7 @@ useAuth();
   const handleGodownClick = (godownId) => {
     setSelectedGodown(godownId);
     setLoadingItems(true);
-    axios.get(`http://localhost:5006/api/items?godown_id=${godownId}`)
+    axios.get(`http://localhost:5005/api/items?godown_id=${godownId}`)
       .then(response => {
         setItems(response.data);
         setLoadingItems(false);
@@ -78,7 +78,7 @@ useAuth();
       setLoadingItems(true);
       try {
         // Make API call with both search term and category
-        const response = await axios.get('http://localhost:5006/api/search-items', {
+        const response = await axios.get('http://localhost:5005/api/search-items', {
           params: {
             search_term: searchQuery,
             category: selectedCategory, // Add category to query params
