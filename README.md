@@ -81,7 +81,7 @@ This project is a web application designed to manage and display information abo
    Start the backend server:
 
    ```bash
-    npm start
+    node server.js
    ```
 
 3. **Frontend Setup**:
