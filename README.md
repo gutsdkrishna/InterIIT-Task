@@ -1,74 +1,62 @@
-InterIIT Task Project
-=====================
+# Inter IIT Task Project
 
-Overview
---------
+## Overview
 
-This project is a web-based application that allows users to view and manage items stored in various godowns (warehouses). The project is divided into a frontend (React) and backend (Node.js, Express, MongoDB), both of which are containerized using Docker for easy setup and deployment.
+This project is a web application designed to manage and display information about godowns and their items. It consists of a frontend built with [React](https://reactjs.org/) and a backend using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/), with [MongoDB](https://www.mongodb.com/) as the database. The application allows users to sign up, log in, view godowns, and search for items based on various criteria.
 
-Thought Process and Design
---------------------------
+## Thought Process and Implementation
 
-1.  **Frontend**:
+### Ideas and Thought Process
 
-    -   The frontend is built using React and styled components. It is designed to be responsive and user-friendly.
-    -   The main feature is a dashboard where users can view godowns, search for items by category or name, and explore items stored in specific godowns.
-2.  **Backend**:
+1. **User Authentication**: 
+   Implemented using [Supabase](https://supabase.com/) for managing user sign-up and login processes. This ensures secure access to the application.
+   
+2. **Godown and Item Management**: 
+   The application fetches data from a MongoDB database to display a hierarchical structure of godowns and their respective items. This structure allows users to easily navigate and find specific items.
+   
+3. **Search and Filter**: 
+   Users can search for items by name and filter them by category, enhancing the user experience by making it easier to find specific items.
+   
+4. **Responsive Design**: 
+   The frontend is designed to be responsive, ensuring usability across different devices and screen sizes.
 
-    -   The backend is built with Node.js and Express, with MongoDB as the database. It provides several APIs to fetch godowns and items, as well as a search feature to find items globally across all godowns.
-    -   It connects to a MongoDB instance and uses a separate database for godowns and items.
-3.  **Dockerization**:
+### Steps Taken
 
-    -   Both the frontend and backend are containerized using Docker. This ensures consistent environments across development and production and simplifies the setup process.
+1. **Frontend Development**:
+   - Used React for building the user interface.
+   - Implemented routing with [`react-router-dom`](https://reactrouter.com/en/main) for navigation between pages.
+   - Styled components using [`styled-components`](https://styled-components.com/) for a consistent and modular design.
 
-Steps Taken to Implement the Project
-------------------------------------
+2. **Backend Development**:
+   - Set up an Express server to handle API requests.
+   - Connected to a MongoDB database using [Mongoose](https://mongoosejs.com/) for data management.
+   - Implemented RESTful APIs to fetch godowns and items, and to perform search operations.
 
-1.  **Setup**:
+3. **Dockerization**:
+   - Created a `docker-compose.yml` file to containerize the frontend and backend services.
+   - Configured Dockerfiles for both services to ensure consistent deployment environments.
 
-    -   Set up the React frontend and Node.js backend separately, ensuring they both run independently.
-    -   Set up MongoDB for storing godown and item data.
-2.  **API Development**:
+4. **Deployment**:
+   - Deployed the frontend and backend services to [Azure], providing a scalable and reliable hosting solution.
 
-    -   Created RESTful APIs in the backend for fetching godown data and items, and added a search API for item queries.
-3.  **Frontend Integration**:
-
-    -   Integrated the backend APIs into the React frontend using Axios for HTTP requests. The frontend communicates with the backend to display godowns and item data dynamically.
-4.  **Dockerization**:
-
-    -   Created Dockerfiles for both the frontend and backend and used Docker Compose to run both services simultaneously in containers.
-5.  **Testing and Debugging**:
-
-    -   Debugged issues with API connections, environment variables, and Docker networking to ensure seamless communication between the frontend and backend.
-
-Running the Project Locally
----------------------------
+## Setup Instructions
 
 ### Prerequisites
 
--   Node.js and npm installed
--   MongoDB running locally or hosted
--   Docker installed
+- [Node.js](https://nodejs.org/en/) and npm installed on your local machine.
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed for containerization.
 
-### Steps to Run Locally
+### Running Locally
 
-1.  **Clone the repository**:
-     ```bash
+1. **Clone the Repository**:
+   ```bash
    git clone <repository-url>
-   cd <repository-directory>```
+   cd InterIIT-Task
+   ```
+   
+2. **Backend Setup**:
+    Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-2.  **Access the app**:
-
-    -   Frontend: `http://localhost:3000`
-    -   Backend API: `http://localhost:5000/api` (or depending on your Docker setup)
-
-Deployment Links
-----------------
-
--   **Frontend**: [Deployed Frontend URL]
--   **Backend**: [Deployed Backend URL]
-
-Conclusion
-----------
-
-This project demonstrates the full-stack development process, from setting up a React frontend and Node.js backend to containerizing the app for deployment. The goal was to create a scalable and maintainable structure using modern tools and technologies.
